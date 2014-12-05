@@ -18,7 +18,7 @@ class SiteController < ApplicationController
 		  	substitute = doc.css('table tr:nth-child(3) table tr:nth-child(8) td span').text.strip.gsub! 'Suplente:', ''
 		  	mail = doc.css('table tr:nth-child(3) table tr:nth-child(10) td:nth-child(1) a').text.strip
 
-		  	if place_int == 2 then head = "Circunscripción " + district end
+		  	if place_int == 2 then head = ('Circunscripción ' + district) end
 
 		  	$entity = Entity.find_or_create_by(name: entity)
 		  	
