@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  resources :members, except: [:new, :edit, :update, :destroy, :create]
-  resources :groups, except: [:new, :edit, :update, :destroy, :create]
-  resources :districts, except: [:new, :edit, :update, :destroy, :create]
-  resources :entities, except: [:new, :edit, :update, :destroy, :create]
+  resources :members, only: [:index, :show]
+  resources :groups, only: [:index] do
+    get 'members', to: 'groups#members'
+  end
+  resources :districts, only: [:index, :show] do
+    get 'member', to: 'districts#member'
+  end
+  resources :entities, only: [:index] do
+    get 'members', to: 'entities#members'
+  end
   get 'site/scrap'
 
   # The priority is based upon order of creation: first created -> highest priority.

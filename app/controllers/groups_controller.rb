@@ -8,4 +8,10 @@ class GroupsController < ApplicationController
   	@group = Group.find params[:id]
   	render json: @group
   end
+
+  def members
+  	@group = Group.find params[:group_id]
+  	@members = @group.members
+  	render json: @members
+  end
 end
